@@ -19,7 +19,7 @@ before_install:
   # auth for docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # build a image for test
-  - docker build -t taka5hi/react-test -f ./client/Dockerfile.dev ./client/Dockerfile.dev
+  - docker build -t taka5hi/react-test -f ./client/Dockerfile.dev ./client
 script:
   # execute test
   - docker run taka5hi/react-test npm test -- --coverage
