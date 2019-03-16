@@ -5,15 +5,21 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
+    # for development environment
+    # nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
         paths:
           - path: /(.*)
+            # for development environment
+            # path: /
             backend:
               serviceName: client-cluster-ip-service
               servicePort: 3000
           - path: /api/(.*)
+            # for development environment
+            # path: /api/
             backend:
               serviceName: server-cluster-ip-service
               servicePort: 5000
